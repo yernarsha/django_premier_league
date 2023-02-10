@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title%}
+Round {{ round }}
+{% endblock %}
+
+{% block content%}
+
+<div class="container">
+<h1>Round {{ round }}</h1>
+
+{% for item in matches %}
+ {{ item.home_team }} - {{ item.away_team }} {{ item.home_goals }}:{{ item.away_goals }}<br/>
+{% endfor %}
+
+<br/>
+</div>
+
+{% endblock %}

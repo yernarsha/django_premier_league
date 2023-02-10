@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Results
+{% endblock %}
+
+{% block content%}
+
+<div class="container">
+
+    <form method="POST" >
+        {% csrf_token %}
+        <h4>Add a new result</h4>
+        {{ form.as_p }}
+
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>    
+
+<hr>
+{% for a in rounds %}
+ <a href="{% url 'show_round' forloop.counter %}">{{ forloop.counter }} round</a><br/>
+{% endfor %}
+<br/>
+ </div>
+
+{% endblock %}

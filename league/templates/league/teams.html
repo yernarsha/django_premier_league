@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+The Premier League teams
+{% endblock %}
+
+{% block content%}
+
+<h1>The Premier League teams</h1>
+<br/>
+
+<div class="container">
+    <form action="{% url 'add_team' %}" method="post">
+        {% csrf_token %}    
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Team name</label>
+          <input type="text" name="title" class="form-control" id="exampleInputEmail1" placeholder="Enter a team name...">
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+      </form>
+
+<hr>
+
+{% for team in teams %} 
+<div>
+    <p>{{ team.id }}. {{ team.title }}&nbsp; &nbsp; 
+    <a href="{% url 'delete_team' team.id %}">Delete</a></p>
+
+</div>
+{% endfor %}
+</div>
+
+{% endblock %}
